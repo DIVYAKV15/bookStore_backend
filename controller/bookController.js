@@ -165,7 +165,7 @@ exports.paymentController = async (req, res) => {
     try {
         // to update the db in mongodb while purchasing
         // ethu book nae aanu vangunu ah book nae kuda venam 
-        const existingBook = await books.findByIdAndUpdate(bookDetails.id, {
+        const existingBook = await books.findByIdAndUpdate({ _id: bookDetails._id }, {
 
             title: bookDetails.title,
             author: bookDetails.author,
@@ -197,7 +197,9 @@ exports.paymentController = async (req, res) => {
                     metadata: {
                         title: bookDetails.title,
                         author: bookDetails.author,
-                        publisher: bookDetails.publisher, language: bookDetails.language, noOfPages: bookDetails.noOfPages,
+                        publisher: bookDetails.publisher,
+                        language: bookDetails.language,
+                        noOfPages: bookDetails.noOfPages,
                         isbn: bookDetails.isbn,
                         imageUrl: bookDetails.imageUrl,
                         category: bookDetails.category,
@@ -234,8 +236,8 @@ exports.paymentController = async (req, res) => {
             // what kind of payment miode like subscription ,if we need only one payemt then payment 
             mode: "payment",
             // where it should move once the payment is sucess
-            // success_url: 'http://localhost:5174/payment-success',
 
+            // success_url: 'http://localhost:5174/payment-success',
             success_url: 'https://boostore-frontend.vercel.app/payment-success',
 
             // if its failure where it should move
