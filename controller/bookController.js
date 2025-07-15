@@ -234,9 +234,12 @@ exports.paymentController = async (req, res) => {
             // what kind of payment miode like subscription ,if we need only one payemt then payment 
             mode: "payment",
             // where it should move once the payment is sucess
-            success_url: 'http://localhost:5174/payment-success',
+            // success_url: 'http://localhost:5174/payment-success',
+
+            success_url: 'https://boostore-frontend.vercel.app/payment-success',
+
             // if its failure where it should move
-            cancel_url: 'http://localhost:5174/payment-fail'
+            cancel_url: 'https://boostore-frontend.vercel.app/payment-fail'
 
 
 
